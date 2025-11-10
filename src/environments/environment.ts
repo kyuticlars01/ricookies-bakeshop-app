@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCjQ-ae9JkQYVTvW...", // Your actual API Key
-    authDomain: "ricookies.firebaseapp.com",
-    projectId: "ricookies",
-    storageBucket: "ricookies.appspot.com",
-    messagingSenderId: "501935115531",
-    appId: "1:501935115531:web:..."
+      apiKey: "AIzaSyCjq-aE0JkQYvtVVArwKc47-JzUflGnKcg",
+      authDomain: "ricookies.firebaseapp.com",
+      projectId: "ricookies",
+      storageBucket: "ricookies.firebasestorage.app",
+      messagingSenderId: "501935115531",
+      appId: "1:501935115531:web:ec98a560a316718688e60e",
+      measurementId: "G-SDGB3YHSYX"
   }
 };
 

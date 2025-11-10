@@ -11,6 +11,7 @@ import {
 import { AuthService } from '../services/auth.service'; 
 import { addIcons } from 'ionicons';
 import { closeCircleOutline } from 'ionicons/icons';
+import { FirebaseError } from '@angular/fire/app';
 
 @Component({
   selector: 'app-login',
@@ -49,17 +50,34 @@ export class LoginPage implements OnInit {
     });
   }
 
-  async login() {
+ async login() {
+    if (!this.email || !this.password) {
+      this.presentToast('Please enter both email and password.', 'danger');
+      return;
+    }
+
     try {
-      // Calls the simulated login method
       await this.authService.signIn(this.email, this.password);
       
-      // Navigate to home upon success
       this.presentToast('Login successful!', 'success');
-      this.router.navigate(['/home']);
-
+      // The ngOnInit subscription will handle the redirect to /home
+      
     } catch (error: any) {
-      this.presentToast('Simulated login failed.', 'danger');
+      let message = 'Login failed. Please try again.';
+      if (error instanceof FirebaseError) {
+        // Handle specific auth errors
+        switch (error.code) {
+          case 'auth/user-not-found':
+          case 'auth/wrong-password':
+          case 'auth/invalid-credential':
+            message = 'Invalid email or password.';
+            break;
+          case 'auth/invalid-email':
+            message = 'Please enter a valid email address.';
+            break;
+        }
+      }
+      this.presentToast(message, 'danger');
     }
   }
   

@@ -9,6 +9,7 @@ import {
   IonList, IonItem, IonLabel, IonInput, ToastController, IonBackButton, IonButtons, IonMenuButton
 } from '@ionic/angular/standalone';
 import { AuthService } from '../services/auth.service'; 
+import { FirebaseError } from '@angular/fire/app';
 
 @Component({
   selector: 'app-register',
@@ -40,8 +41,7 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() { }
 
-  async register() {
-    // 1. Basic validation (matching PHP logic)
+async register() {
     if (!this.username || !this.email || !this.password || !this.confirmPassword) {
       this.presentToast('All fields are required.', 'danger');
       return;
@@ -51,21 +51,31 @@ export class RegisterPage implements OnInit {
       return;
     }
     
-    // 2. Simulate database registration
     try {
-      // NOTE: In a real Angular app, this would use the AuthService to call Firebase signUp
-      // We simulate success here.
-      
-      // Simulate unique check (optional logic, removed for simplicity)
-      // await this.authService.signUp(this.email, this.password, this.username); 
+      // --- THIS IS THE UPDATED LINE ---
+      // We now pass the username to the auth service
+      await this.authService.register(this.email, this.password, this.username);
+      // --------------------------------
 
       this.presentToast('Registration successful! Please log in.', 'success');
-      
-      // Navigate to the login page after successful simulation
       this.router.navigate(['/login']);
 
     } catch (error: any) {
-      this.presentToast('Registration failed. Please try a different email.', 'danger');
+      let message = 'Registration failed. Please try again.';
+      if (error instanceof FirebaseError) {
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            message = 'This email address is already in use.';
+            break;
+          case 'auth/weak-password':
+            message = 'Password is too weak. Must be at least 6 characters.';
+            break;
+          case 'auth/invalid-email':
+            message = 'Please enter a valid email address.';
+            break;
+        }
+      }
+      this.presentToast(message, 'danger');
     }
   }
   

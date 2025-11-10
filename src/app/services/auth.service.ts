@@ -1,27 +1,54 @@
-// src/app/services/auth.service.ts
-
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { 
+  Auth, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword, 
+  signOut,
+  onAuthStateChanged,
+  User,
+  updateProfile // <-- ADD THIS IMPORT
+} from '@angular/fire/auth'; 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
-  public userSubject = new BehaviorSubject<any | null>(null); 
-  public user$: Observable<any | null> = this.userSubject.asObservable(); 
+export class AuthService {
+  
+  private auth: Auth = inject(Auth); 
+  public userSubject = new BehaviorSubject<User | null>(null);
+  public user$: Observable<User | null> = this.userSubject.asObservable(); 
 
-  ngOnInit() {
-      this.userSubject.next(null);
+  constructor() {
+    onAuthStateChanged(this.auth, (user) => {
+      this.userSubject.next(user);
+    });
   }
 
-  // CRITICAL FIX: Provides a synchronous way for components to check login status
   public isUserLoggedOutSync(): boolean {
-      return this.userSubject.value === null;
+    return this.userSubject.value === null;
   }
 
-  // Placeholder function for sign-in
-  async signIn(email: string, password: string): Promise<void> {
-    this.userSubject.next({ uid: 'simulated-user-id' }); 
-    console.log("Simulated sign in successful.");
+  async signIn(email: string, password: string): Promise<User> {
+    const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+    return userCredential.user;
+  }
+
+  // --- UPDATED REGISTER FUNCTION ---
+  async register(email: string, password: string, username: string): Promise<User> {
+    const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+    
+    // --- ADD THIS BLOCK ---
+    // This saves the username to the Firebase user's profile
+    await updateProfile(userCredential.user, {
+      displayName: username
+    });
+    // --------------------
+    
+    return userCredential.user;
+  }
+
+  async signOut(): Promise<void> {
+    await signOut(this.auth);
   }
 }
