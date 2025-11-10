@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding register-page-content">
+  <div class="register-container">
+    <h2>Ricookies Sign Up</h2>
+    <p>Create your account to proceed to checkout.</p>
+    
+    <form (ngSubmit)="register()">
+      <ion-list class="register-form">
+        
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="username" 
+            name="username" 
+            required
+          ></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="email" 
+            name="email" 
+            required
+          ></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input 
+            type="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input 
+            type="password" 
+            [(ngModel)]="confirmPassword" 
+            name="confirmPassword" 
+            required
+          ></ion-input>
+        </ion-item>
+        
+      </ion-list>
+      
+      <ion-button 
+        type="submit" 
+        expand="block" 
+        class="register-button"
+      >
+        Register
+      </ion-button>
+    </form>
+    
+    <div class="login-link">
+      <ion-label>Already Have an Account? 
+        <a routerLink="/login">Login Now!</a>
+      </ion-label>
+    </div>
+  </div>
+</ion-content>

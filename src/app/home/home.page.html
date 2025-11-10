@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Ricookies Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="background-container">
+    <div class="content-overlay"></div>
+    <div class="text-content container"> 
+      <h2>Welcome to The Ricookies Bake Shop!</h2>
+      <p>We are ready to serve delicious treats.</p>
+      
+      <ion-button 
+        routerLink="/menu" 
+        class="view-menu-btn" 
+        fill="solid"
+        style="--background: #7B5C3D; --color: #EEDDA8; --border-color: #EEDDA8; border: 1px solid var(--border-color);"
+      >
+        VIEW MENU
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

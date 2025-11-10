@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>About</ion-title>
+  </ion-toolbar>
+</ion-header><ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+
+      <h2>Meet the Owner</h2>
+
+
+<ion-content [fullscreen]="true">
+  </ion-content>
+      <div class="image-wrapper">
+        <ion-img 
+          [src]="ownerImageUrl"  
+          alt="Bakeshop Owner" 
+          class="owner-image"
+          ></ion-img>
+      </div>
+      
+      <p class="owner-name bold-text">{{ ownerFullName }}</p>
+
+      <div class="divider"></div>
+      
+      <h3 class="centered-heading bold-text">Origin of the Ricookies Bake Shop</h3>
+      <p class="origin-text">{{ originStory }}</p>
+      
+      <div class="divider"></div>
+      
+      <h3 class="centered-heading bold-text">Our Location</h3>
+      <p class="centered-description">{{ locationAddress }}</p>
+
+      <div class="map-iframe-container">
+        <iframe
+          [src]="embedMapUrl | safeUrl"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      
+      <div class="location-link-container" (click)="openLink(locationMapUrl)">
+        <ion-icon name="location-outline" class="location-icon"></ion-icon>
+        <span>View on Google Maps</span>
+      </div>
+      
+            <div class="divider"></div> 
+      
+      <div class="facebook-link-container" (click)="openLink(facebookUrl)">
+        <ion-img 
+                    src="assets/pictures/fb logo.png" 
+          alt="Facebook Logo" 
+          class="ricookies-fb-logo"
+        ></ion-img>
+        <span>Ricookies Page!</span>
+      </div>
+      
+      </ion-card-content>
+  </ion-card>
+</ion-content>

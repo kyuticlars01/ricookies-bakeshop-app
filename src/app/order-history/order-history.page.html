@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Order History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <h2>Your Past Orders</h2>
+    
+    <ion-list class="order-list" inset="true" *ngIf="orders.length > 0; else noOrders">
+      <ion-item *ngFor="let order of orders" lines="inset">
+        <ion-label>
+          <h3>Order #{{ order.id }} - {{ order.date }}</h3>
+          <p>{{ order.items }}</p>
+        </ion-label>
+        <ion-note slot="end">{{ order.total }}</ion-note>
+      </ion-item>
+    </ion-list>
+    
+    <ng-template #noOrders>
+      <p class="ion-text-center">You haven't placed any orders yet!</p>
+    </ng-template>
+
+  </div>
+</ion-content>

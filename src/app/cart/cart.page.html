@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="cart-page-content">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">My Cart</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid *ngIf="(cartItems$ | async) as cartItems; else emptyCart">
+    <ion-row class="cart-item-header">
+      <ion-col size="5">Item</ion-col>
+      <ion-col size="3" class="ion-text-center">Quantity</ion-col> 
+      <ion-col size="4" class="ion-text-right">Price</ion-col>
+    </ion-row>
+
+    <ng-container *ngIf="cartItems.length > 0; else emptyCartContent">
+      <ion-row *ngFor="let item of cartItems" class="cart-item-row">
+        
+        <ion-col size="5" class="item-details">
+          <ion-img [src]="item.imageUrl" [alt]="item.name" class="cart-item-img" onerror="this.src='https://placehold.co/300x200/FFFDD0/000?text=Image+Missing'"></ion-img>
+          <div class="item-info">
+            <ion-label class="item-name">{{ item.name }}</ion-label>
+            <ion-note class="item-price-per-unit">₱{{ item.price | number:'1.2-2' }} each</ion-note>
+          </div>
+        </ion-col>
+
+        <ion-col size="3" class="ion-text-center quantity-controls">
+          <ion-button fill="clear" (click)="decreaseQuantity(item.id, item.quantity)">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-button>
+
+          <span class="item-quantity">{{ item.quantity }}</span>
+
+          <ion-button fill="clear" (click)="increaseQuantity(item.id, item.quantity)">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        
+        <ion-col size="4" class="ion-text-right item-total">
+          ₱{{ (item.quantity * item.price) | number:'1.2-2' }}
+          <ion-button fill="clear" color="danger" (click)="removeFromCart(item.id)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    
+    <ng-template #emptyCartContent>
+        <div class="empty-cart-message ion-text-center">
+            <p>Your cart is empty!</p>
+            <ion-button routerLink="/menu" color="primary">GO TO MENU</ion-button>
+        </div>
+    </ng-template>
+
+  </ion-grid>
+
+  <ng-template #emptyCart>
+    <div class="empty-cart-message ion-text-center">
+      <p>Your cart is empty!</p>
+      <ion-button routerLink="/menu">GO TO MENU</ion-button> 
+    </div>
+  </ng-template>
+
+</ion-content>
+
+<ion-footer *ngIf="((cartItems$ | async)?.length || 0) > 0">
+  <ion-toolbar class="cart-footer-toolbar">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="6">
+          <ion-label class="total-label">Total:</ion-label>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <ion-label class="total-price">₱{{ (total$ | async) || 0 | number:'1.2-2' }}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" (click)="proceedToCheckout()">
+            PROCEED TO CHECKOUT
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,103 @@
+/* src/app/register/register.page.scss */
+
+$light-tan: #D2B48C;      
+$dark-brown-accent: #8B4513; 
+$card-cream: #FFFDD0;     
+$dark-text: #000000;
+
+// --- 1. Header and Content Background ---
+
+ion-header ion-toolbar {
+    --background: #D2B48C;
+    --color: #000000;
+    
+    // FIX: Force the menu icon to be black and visible
+    ion-menu-button {
+        --color: #000000;
+    }
+}
+
+ion-content.register-page-content {
+    --background: #D2B48C !important; 
+    color: $dark-text;
+    font-family: "Times New Roman", Times, serif;
+
+    @media (prefers-color-scheme: dark) {
+        --background: #D2B48C!important;
+    }
+}
+
+// --- 2. Registration Container and Text ---
+
+.register-container {
+    max-width: 400px;
+    margin: 50px auto; 
+    padding: 20px;
+    background: $card-cream;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+        font-size: 1.8rem;
+        color: $dark-brown-accent;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 25px;
+        color: $dark-text;
+    }
+}
+
+
+// --- 3. Form List and Input Styles ---
+
+.register-form {
+    background: transparent; 
+    margin-bottom: 20px;
+    
+    ion-item {
+        --background: transparent; 
+        --color: #000000;
+        
+        ion-input {
+            --color: #000000;
+        }
+        
+        ion-label {
+            color: $dark-text;
+        }
+    }
+}
+
+// --- 4. Register Button ---
+
+.register-button {
+    --background: #8B4513; 
+    --color: #000000; 
+    --background-activated: #5D472F;
+    height: 48px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+// --- 5. Login Link ---
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: $dark-text;
+    
+    a {
+        color: $dark-brown-accent; 
+        font-weight: bold;
+        text-decoration: none;
+    }
+}

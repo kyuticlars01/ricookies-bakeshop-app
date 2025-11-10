@@ -1,0 +1,191 @@
+// Define colors based on your Theme
+$header-brown: #7B5C3D;   // Dark Brown (Used for Header/Button Background)
+$content-khaki: #EEDDA8;  // Warm Khaki (Light Text Color for button, Main Background)
+$card-cream: #FFFDD0;     // Cream Color (Used for item rows/empty card)
+$dark-text: #000000;      // Black text for visibility
+$accent-dark: #8B4513;    // Dark Brown accent color
+
+// --- 1. Toolbar Styling ---
+ion-toolbar {
+    --background: #D2B48C; // Light Bakeshop Brown
+    --color: #{$dark-text};
+    
+    ion-menu-button {
+        --color: #{$dark-text};
+    }
+}
+
+// --- 2. Content & Grid Layout ---
+
+ion-content.cart-page-content {
+    --background: #D2B48C; // Main Page Background Color
+    
+    @media (prefers-color-scheme: dark) {
+        --background: #D2B48C;
+    }
+}
+
+ion-grid {
+    padding: 16px;
+    color: #{$dark-text}; 
+    font-family: "Times New Roman", Times, serif;
+
+    ion-row {
+        background: #FFFDD0; 
+        border-radius: 8px;
+        margin-bottom: 12px;
+        padding: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        align-items: center; 
+    }
+    
+    .cart-item-header {
+        background: transparent; 
+        font-weight: bold;
+        font-size: 1.1em;
+        padding-bottom: 10px;
+        box-shadow: none; 
+        border-bottom: 2px solid #{$accent-dark}; 
+        margin-bottom: 15px;
+        color: #{$dark-text}; 
+    }
+
+    .item-details {
+        display: flex;
+        align-items: center; 
+
+        .cart-item-img {
+            width: 60px; 
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+
+            .item-name {
+                font-weight: bold;
+                font-size: 0.95em;
+                white-space: normal; 
+                line-height: 1.2;
+                color: #{$dark-text};
+            }
+
+            .item-price-per-unit {
+                font-size: 0.8em;
+                color: #555; 
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        }
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        ion-button {
+            --padding-start: 4px;
+            --padding-end: 4px;
+            --min-width: 32px;
+            height: 32px;
+            font-size: 1.5em; 
+            --color: #{$dark-text} !important;
+        }
+
+        .item-quantity {
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1em;
+            margin: 0 5px;
+            color: #{$dark-text};
+        }
+    }
+
+    .item-total {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; 
+
+        font-weight: bold;
+        font-size: 1.1em;
+
+        ion-button {
+            --padding-start: 4px;
+            --padding-end: 4px;
+            --min-width: 32px;
+            height: 32px;
+            font-size: 1.5em; 
+            margin-left: 8px; 
+        }
+    }
+}
+
+// --- 3. Empty Cart Message and Button Styling ---
+
+.empty-cart-message {
+    padding: 40px 20px;
+    font-size: 1.2em;
+    color: #{$dark-text};
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+
+    /* Target the ion-button within this container */
+    ion-button {
+        margin-top: 20px;
+        
+        // FIX 1: Set button background to Dark Brown
+        --background: #{$header-brown} !important; 
+        
+        // FIX 2: Set text color to Light Khaki/Cream
+        --color: #{$content-khaki} !important; 
+        
+        // Ensure it's a solid fill
+        fill: solid !important;
+        
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        --border-radius: 4px;
+        --background-activated: #5D472F; 
+    }
+}
+
+// --- 4. Footer Styling ---
+ion-footer {
+    .cart-footer-toolbar {
+        --background: #D2B48C; 
+        padding: 10px 16px;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+
+        .total-label {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #FFFDD0;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .total-price {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #{$accent-dark}; 
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        ion-button {
+            margin-top: 15px;
+            --background: #{$accent-dark} !important; 
+            --background-activated: #A0522D; 
+            --color: #ffffff !important; 
+            
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 48px;
+        }
+    }
+}

@@ -1,0 +1,112 @@
+// Define colors based on Cart Page Theme
+$light-tan: #D2B48C;      
+$dark-brown-accent: #8B4513; // Used for borders/accents
+$card-cream: #FFFDD0;     
+$dark-text: #000000;
+$dark-heading: #4A2E1F; // For contrast in headings
+
+// --- AGGRESSIVE THEME OVERRIDE ---
+// Ensure the component's host element forces the light background
+:host {
+    --ion-background-color: #{$light-tan} !important;
+    --ion-text-color: #{$dark-text} !important;
+}
+
+ion-toolbar {
+  --background: #D2B48C;
+  --color: #000000;
+  
+  // Back button and other toolbar items will use dark text color
+  ion-back-button {
+    --color: $dark-text;
+  }
+}
+
+// FIX: Set Content Background to light tan (Critical fix for the black screen)
+ion-content.payment-page-content {
+  --background: #D2B48C!important; 
+  color: $dark-text;
+  font-family: "Times New Roman", Times, serif;
+  
+  @media (prefers-color-scheme: dark) {
+    --background:#D2B48C!important;
+  }
+}
+
+.checkout-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px;
+  background: $card-cream; // Use Cream background for the card
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.section-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $dark-heading; // Dark heading color
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #{$dark-brown-accent}; // Darker border
+}
+
+.summary-list {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 20px;
+  
+  ion-item {
+    --background: transparent;
+    color: $dark-text;
+  }
+}
+
+.total-row {
+  --border-color: #{$dark-brown-accent};
+  --border-width: 2px 0 0 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: $dark-brown-accent; // Dark accent color
+}
+
+// Payment Method Cards
+.method-options {
+  ion-item {
+    --background: white; 
+    --border-radius: 8px;
+    --border-color: #ccc;
+    --border-width: 1px;
+    
+    ion-label {
+      font-weight: 500;
+      color: $dark-text;
+    }
+    
+    ion-icon {
+      color: $dark-brown-accent;
+    }
+  }
+
+  .selected-method {
+    --border-width: 2px;
+    --border-color: $dark-brown-accent !important; 
+    background: rgba(139, 69, 19, 0.05) !important;
+  }
+}
+
+.pay-now-button {
+  --background: #A0522D;
+  --color: #ffffff;
+  font-size: 1.1rem;
+  height: 48px;
+  margin-top: 30px;
+  
+  // Fixes the visibility of the disabled button
+  &[disabled] {
+    opacity: 0.6 !important; 
+    --color: $dark-brown-accent !important; 
+    --background: #{$card-cream} !important; 
+    border: 1px solid $dark-brown-accent;
+  }
+}

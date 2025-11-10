@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding login-page-content">
+  <div class="login-container">
+    <h2>Welcome Back!</h2>
+    <p>Sign in to proceed to payment.</p>
+    
+    <form (ngSubmit)="login()">
+      <ion-list class="login-form">
+        
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="email" 
+            name="email" 
+            required
+          ></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input 
+            type="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            required
+          ></ion-input>
+        </ion-item>
+        
+      </ion-list>
+      
+      <ion-button 
+        type="submit" 
+        expand="block" 
+        class="login-button"
+      >
+        Sign In
+      </ion-button>
+    </form>
+    
+    <div class="register-link">
+      <ion-label>Don't have an account? 
+        <a routerLink="/register">Register Here</a> 
+      </ion-label>
+    </div>
+    
+    </div>
+</ion-content>

@@ -1,0 +1,50 @@
+// src/app/edit-profile/edit-profile.page.scss
+// Header
+ion-toolbar {
+  --background: #D2B48C;
+  color: #000000;
+  
+  ion-back-button {
+    --color: #000000;
+  }
+}
+
+// Content background
+ion-content {
+  --background: #D2B48C; // Light brown background
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+}
+
+// Form list styling
+.form-list {
+  background: #FFFDD0; // Cream background
+  border-radius: 12px;
+  margin: 20px 16px; // Add margin to the top and sides
+  
+  ion-item {
+    --background: transparent;
+    --color: #000; 
+    font-family: "Times New Roman", Times, serif;
+    
+    ion-label {
+      color: #333; // Darker label
+    }
+    
+    ion-input {
+      --color: #000; // Black input text
+    }
+  }
+}
+
+// Save button styling
+.save-button {
+  --background: #8B4513; // Dark brown
+  --background-activated: #A0522D;
+  --color: #ffffff; // White text
+  
+  height: 48px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+}

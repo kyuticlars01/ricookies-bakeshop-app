@@ -1,0 +1,64 @@
+<ion-app>
+  <ion-menu contentId="main-content" type="overlay">
+    
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Bake Shop Navigation</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+   
+    <ion-content>
+      <ion-list>
+        <ion-item [routerLink]="['/home']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="home-outline"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-item>
+        
+        <ion-item [routerLink]="['/menu']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="restaurant-outline"></ion-icon>
+          <ion-label>Menu</ion-label>
+        </ion-item>
+        
+        <ion-item [routerLink]="['/cart']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="cart-outline"></ion-icon>
+          <ion-label>Cart</ion-label>
+        </ion-item>
+    
+        <ion-item [routerLink]="['/payment']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="card-outline"></ion-icon>
+          <ion-label>Checkout</ion-label>
+        </ion-item>
+        
+        <ion-item [routerLink]="['/profile']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="person-outline"></ion-icon>
+          <ion-label>Profile</ion-label>
+        </ion-item>
+
+        <ion-item [routerLink]="['/about']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+          <ion-label>About</ion-label>
+        </ion-item>
+
+        <ion-item [routerLink]="['/contact']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="mail-outline"></ion-icon>
+          <ion-label>Contact Us</ion-label>
+        </ion-item>
+        
+        <ion-item [routerLink]="['/login']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="log-in-outline"></ion-icon>
+          <ion-label>Login</ion-label>
+        </ion-item>
+        
+        <ion-item [routerLink]="['/register']" routerLinkActive="selected" lines="none">
+          <ion-icon slot="start" name="person-add-outline"></ion-icon>
+          <ion-label>Register</ion-label>
+        </ion-item>
+        
+      </ion-list>
+    </ion-content>
+    
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

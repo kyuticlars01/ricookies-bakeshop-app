@@ -1,0 +1,77 @@
+/* src/app/contact/contact.page.scss */
+
+// Header toolbar
+ion-toolbar {
+  --background: #D2B48C; // Light bakeshop brown
+  color: #000000; // Black text
+  
+  ion-menu-button {
+    --color: #000000; // Black menu icon
+  }
+}
+
+// Content background
+ion-content {
+  --background: #D2B48C; // Light brown background
+  font-family: "Times New Roman", Times, serif;
+
+  @media (prefers-color-scheme: dark) {
+    --background: #D2B48C;
+  }
+}
+
+// Style for both lists
+ion-list {
+  background: #FFFDD0; // Cream background
+  border-radius: 12px;
+  margin: 20px 16px; // Add some spacing
+  padding: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Style for list headers ("Get in Touch", "Send us a Message")
+ion-list-header {
+  color: #000000; // Black text
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+// Style for list items
+ion-item {
+  --background: transparent; // Use the list's cream background
+  --color: #000000; // Black text
+  font-family: "Times New Roman", Times, serif;
+  
+  ion-icon {
+    color: #8B4513; // Dark brown icon
+    margin-right: 12px;
+  }
+  
+  ion-label {
+    color: #000000;
+  }
+  
+  // Style for the input fields
+  ion-input,
+  ion-textarea {
+    --color: #000000; // Black text
+    --placeholder-color: #555; // Dark grey placeholder
+    --background: rgba(0, 0, 0, 0.05); // Slight grey background for input
+    border-radius: 6px;
+    padding-left: 10px !important;
+    margin-top: 5px;
+  }
+}
+
+// Style for the "SEND MESSAGE" button (dark brown)
+ion-button {
+  --background: #8B4513; // Dark brown
+  --background-activated: #A0522D;
+  --color: #ffffff; // White text
+  
+  height: 48px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 16px 20px 16px;
+}

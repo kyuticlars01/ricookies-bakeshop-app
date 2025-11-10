@@ -1,0 +1,37 @@
+// Header
+ion-toolbar {
+  --background: #D2B48C;
+  color: #000000;
+  
+  ion-back-button {
+    --color: #000000;
+  }
+}
+
+// Content background
+ion-content {
+  --background: #D2B48C;
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+}
+
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  color: #4A2E1F; // Dark brown heading
+  margin-bottom: 20px;
+}
+
+.settings-list {
+  background: #FFFDD0; // Cream background
+  border-radius: 12px;
+  
+  ion-item {
+    --background: transparent;
+    --color: #000;
+    
+    ion-label {
+      color: #000;
+    }
+  }
+}

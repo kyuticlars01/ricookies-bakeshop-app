@@ -1,0 +1,70 @@
+// Header toolbar for profile page
+ion-toolbar {
+  --background: #D2B48C; // Light bakeshop brown
+  color: #000000; // Black text for "Profile"
+  
+  ion-menu-button {
+    --color: #000000; // Black menu icon
+  }
+}
+
+// Background for the main content area
+ion-content {
+  --background: #D2B48C; // Light brown background
+  font-family: "Times New Roman", Times, serif;
+
+  @media (prefers-color-scheme: dark) {
+    --background: #D2B48C;
+  }
+}
+
+.profile-avatar {
+  width: 128px;
+  height: 128px;
+  margin: 16px auto;
+  border: 4px solid #FFFDD0; // Cream border
+  display: block; 
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.profile-name {
+  color: #000;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.profile-email {
+  color: #333; 
+  font-family: "Times New Roman", Times, serif;
+}
+
+.profile-list {
+  background: #FFFDD0; // Cream background for the list container
+  border-radius: 12px;
+  margin-top: 20px;
+  
+  // Force list items to be cream-colored (light)
+  ion-item {
+    --background: #FFFDD0 !important; // Cream background
+    --color: #000 !important; // Black text
+    font-family: "Times New Roman", Times, serif;
+
+    ion-icon {
+      color: #8B4513 !important; // Dark brown icon
+    }
+  }
+}
+
+.logout-button {
+  --background: #8B4513; // Dark brown (SaddleBrown)
+  --background-activated: #A0522D;
+  --color: #ffffff; // White text
+  
+  height: 48px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+}

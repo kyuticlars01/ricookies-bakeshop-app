@@ -1,0 +1,109 @@
+// Define colors (using the light theme)
+$light-background: #D2B48C; 
+$dark-text: #000000;
+
+// CRITICAL FIX 1: Apply styles to the component host for full takeover
+:host {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// CRITICAL FIX 2: Target the ion-content element and its internal scroll container
+ion-content.splash-screen-content {
+    --background: #{$light-background};
+    height: 100%; 
+    width: 100%;
+    
+    // Use the native part selectors for guaranteed vertical centering
+    &::part(scroll) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Forces vertical centering */
+        align-items: center; /* Forces horizontal centering */
+        height: 100%; 
+    }
+}
+
+.splash-container {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+// --- 1. The Image and Initial Animation (Phase 1: Continuous Circulation) ---
+.rotating-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; 
+    
+    /* Phase 1: Continuous Circulation. Runs infinitely until JS triggers Phase 2. */
+    animation: circulate-and-roll 4s ease-in-out infinite; 
+
+    /* Initial state: visible, centered, and ready to roll */
+    opacity: 1;
+    transform: scale(1) rotate(0deg); 
+}
+
+// Phase 2 Triggered by TS (JS adds this class after ~9.5 seconds)
+.rotating-logo.zoom-out {
+    /* Override the infinite circulation with the final zoom-out transition */
+    animation: zoom-transition 500ms ease-in forwards !important; 
+}
+
+
+// --- 2. Keyframe Animation (Continuous Circulation) ---
+@keyframes circulate-and-roll {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    25% {
+        transform: translate(15px, -15px) scale(1.02) rotate(90deg);
+    }
+    50% {
+        transform: translate(0, 0) scale(1) rotate(180deg);
+    }
+    75% {
+        transform: translate(-15px, 15px) scale(1.02) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) scale(1) rotate(360deg);
+    }
+}
+
+// --- 3. Keyframe Animation (Final Zoom-Out Transition - 0.5s) ---
+@keyframes zoom-transition {
+    0% {
+        /* Start from current state (must be 100% size) */
+        opacity: 1;
+        transform: scale(1) rotate(360deg); 
+    }
+    100% {
+        /* Final state: Hidden and covering the screen */
+        opacity: 0;
+        transform: scale(50) rotate(360deg); 
+    }
+}
+
+// --- App Name Styling (Ensures the text fades out before zoom) ---
+.app-name {
+    font-size: 1.5em;
+    font-family: "Times New Roman", Times, serif;
+    color: #{$dark-text};
+    font-weight: bold;
+    
+    /* Fade text out slightly before the logo takes over */
+    animation: fade-out 0.5s ease-out 9s forwards; 
+}
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}

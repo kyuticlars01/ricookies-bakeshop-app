@@ -1,0 +1,20 @@
+:root {
+    
+    --color-beige: #e6d6b6;
+    --color-dark-brown: #5c3b1b; 
+    --color-light-dark-brown: #6b4a2e; 
+    --ion-background-color: var(--color-light-dark-brown);
+    --ion-background-color-rgb: 230, 214, 182; 
+    
+    --ion-text-color: var(--color-dark-brown);
+    --ion-text-color-rgb: 92, 59, 27; 
+
+    --ion-toolbar-background: var(--color-beige);
+    --ion-toolbar-color: var(--colorbeige); 
+    
+    --ion-color-primary: var(--color-light-dark-brown); 
+    --ion-color-primary-rgb: 107, 74, 46;
+    --ion-color-primary-contrast: var(--color-beige); 
+    --ion-color-primary-contrast-rgb: 230, 214, 182;
+   
+}

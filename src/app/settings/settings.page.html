@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <h2>App Preferences</h2>
+    
+    <ion-list class="settings-list" inset="true">
+      <ion-item lines="none">
+        <ion-label>Enable Dark Mode</ion-label>
+        <ion-toggle slot="end" [(ngModel)]="isDarkMode"></ion-toggle>
+      </ion-item>
+      
+      <ion-item button="true">
+        <ion-label>Clear Cache</ion-label>
+      </ion-item>
+    </ion-list>
+    
+  </div>
+</ion-content>

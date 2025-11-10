@@ -1,0 +1,40 @@
+<!-- src/app/edit-profile/edit-profile.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    <ion-list class="form-list" inset="true">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input formControlName="username" type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Avatar Image URL</ion-label>
+        <ion-input formControlName="avatarUrl" type="url"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding-horizontal">
+      <ion-button 
+        type="submit" 
+        expand="block" 
+        class="save-button" 
+        [disabled]="!profileForm.valid">
+        Save Changes
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,105 @@
+/* src/app/login/login.page.scss */
+
+// Define theme colors
+$light-tan: #D2B48C;      
+$dark-brown-accent: #8B4513; 
+$card-cream: #FFFDD0;     
+$dark-text: #000000;
+
+// --- 1. Header and Content Background ---
+
+ion-header ion-toolbar {
+    --background: #D2B48C;
+    --color: #000000;
+    ion-login-button {
+        --color: #{$dark-text} !important; 
+        color: #{$dark-text} !important;
+    }
+}
+
+ion-content.login-page-content {
+    --background: #D2B48C !important; // Force light tan background
+    
+    // Ensure all content uses the dark text color
+    color: $dark-text;
+    font-family: "Times New Roman", Times, serif;
+
+    @media (prefers-color-scheme: dark) {
+        --background: #D2B48C !important;
+    }
+}
+
+// --- 2. Login Container and Text ---
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto 0; // Center container horizontally and push it down
+    padding: 20px;
+    
+    h2 {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+        font-size: 1.8rem;
+        color: $dark-brown-accent;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 25px;
+        color: $dark-text;
+    }
+}
+
+
+// --- 3. Form List and Input Styles (Cream Background) ---
+
+.login-form {
+    background: $card-cream; // Cream background for the form list
+    border-radius: 12px;
+    margin-bottom: 20px;
+    
+    ion-item {
+        --background: transparent; // Ensure item rows are transparent
+        --color: #000000;
+        
+        // Input text color
+        ion-input {
+            --color: #000000;
+        }
+        
+        // Label color
+        ion-label {
+            color: #000000;
+        }
+    }
+}
+
+// --- 4. Sign In Button ---
+
+.login-button {
+    --background: #8B4513; // Dark Brown Button
+    --color: #ffffff; // White Text
+    --background-activated: #5D472F;
+    height: 48px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+// --- 5. Register Link ---
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: $dark-text;
+    
+    a {
+        color: $dark-brown-accent; // Dark brown link color
+        font-weight: bold;
+        text-decoration: none;
+    }
+}

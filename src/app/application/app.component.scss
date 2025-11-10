@@ -1,0 +1,49 @@
+// Define colors based on your app's light brown theme
+$menu-bg-color: #EEDDA8;    // Mild Light Brown/Khaki (Desired Background)
+$menu-header-bg: #7B5C3D;   // Dark Brown (Header)
+$item-hover-bg: #D2B48C;    // Slightly darker khaki (Hover/Active)
+$text-dark: #382D1C;        // Very Dark Brown (Text/Icons)
+
+:host {
+    // FIX 1: Force the entire menu element background (Fallback)
+    ion-menu {
+        --background: #{$menu-bg-color} !important;
+    }
+    
+    // FIX 2: CRITICAL FIX - Target the ion-content within the menu
+    ion-menu ion-content {
+        --background: #{$menu-bg-color} !important;
+        background: #{$menu-bg-color} !important;
+    }
+
+    // Target the menu header toolbar explicitly
+    ion-menu ion-toolbar {
+        --background: #{$menu-header-bg} !important;
+        --color: white !important; 
+    }
+}
+
+// Target all menu items for text/icon color
+ion-item {
+    --background: transparent !important; 
+    
+    // FIX 3: Force dark brown text color
+    --color: #{$text-dark} !important; 
+    
+    ion-icon {
+        --color: #{$text-dark} !important; 
+        color: #{$text-dark} !important;
+    }
+    
+    // Style the active/hover state
+    &.activated, &:hover, &.active-page {
+        --background: #{$item-hover-bg} !important;
+        --color: #{$text-dark} !important;
+    }
+}
+
+// Ensure the list itself is transparent
+ion-list {
+    --ion-background-color: transparent !important;
+    background: transparent !important;
+}

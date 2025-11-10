@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ item.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-img [src]="item.imageUrl" [alt]="item.name" class="modal-image" onerror="this.src='https://placehold.co/600x400/FFFDD0/000?text=Image+Missing'"></ion-img>
+  
+  <h2 class="modal-title">{{ item.name }}</h2>
+  <p class="modal-description">{{ item.description }}</p>
+  <span class="modal-price">{{ item.price }}</span>
+
+  <div class="quantity-selector">
+    <ion-button fill="clear" size="small" (click)="decreaseQuantity()">
+      <ion-icon slot="icon-only" name="remove"></ion-icon>
+    </ion-button>
+    <span class="quantity">{{ quantity }}</span>
+    <ion-button fill="clear" size="small" (click)="increaseQuantity()">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" class="add-to-cart-button" (click)="confirm()">
+      Add ({{ quantity }}) to Cart
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
