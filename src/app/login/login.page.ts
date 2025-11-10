@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router'; // <-- CRITICAL FIX: Add RouterModule
 import { 
   IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonMenuButton,
-  IonList, IonItem, IonLabel, IonInput, ToastController 
+  IonList, IonItem, IonLabel, IonInput, ToastController, IonButtons
 } from '@ionic/angular/standalone';
 import { AuthService } from '../services/auth.service'; 
 import { addIcons } from 'ionicons';
@@ -22,7 +22,7 @@ import { closeCircleOutline } from 'ionicons/icons';
     FormsModule, 
     RouterModule, // <-- FIX: Enables the routerLink in the HTML
     IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonMenuButton, 
-    IonList, IonItem, IonLabel, IonInput
+    IonList, IonItem, IonLabel, IonInput, IonButtons
   ],
 })
 export class LoginPage implements OnInit {

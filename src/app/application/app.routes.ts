@@ -38,6 +38,10 @@ export const routes: Routes = [
     path: 'contact',
     loadComponent: () => import('../contact/contact.page').then( m => m.ContactPage)
   },
+  {
+    path: 'developer',
+    loadComponent: () => import('../developer/developer.page').then( m => m.DeveloperPage)
+  },
   
   // 3. SECONDARY PAGES (Profile Sub-links)
  {

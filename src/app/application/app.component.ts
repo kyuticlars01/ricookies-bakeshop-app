@@ -25,7 +25,8 @@ import {
   mailOutline,
   cardOutline, 
   logInOutline, // <-- NEW ICON
-  personAddOutline // <-- NEW ICON
+  personAddOutline,// <-- NEW ICON
+  codeSlashOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -61,7 +62,8 @@ export class AppComponent {
       mailOutline,
       cardOutline,
       logInOutline, // <-- ADDED
-      personAddOutline // <-- ADDED
+      personAddOutline,
+      codeSlashOutline // <-- ADDED
     });
   }
 }

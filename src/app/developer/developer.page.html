@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Meet the Developer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="developer-card">
+    
+    <ion-avatar class="dev-avatar">
+      <img alt="Developer avatar" src="assets/pictures/clars.jpg" />
+    </ion-avatar>
+
+    <h2 class="dev-name">Clarise Angel M. Aquino</h2>
+    <p class="dev-subtitle">Project Lead / Developer</p>
+
+    <ion-list class="skills-list">
+      <ion-list-header class="skills-header">
+        Experiences:
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-icon name="code-slash-outline" class="skill-icon"></ion-icon>
+        <ion-label class="skill-label">Frontend Development (HTML, CSS, JS)</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="code-slash-outline" class="skill-icon"></ion-icon>
+        <ion-label class="skill-label">Mobile Development (Ionic)</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="logo-figma" class="skill-icon"></ion-icon>
+        <ion-label class="skill-label">Figma</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon name="logo-github" class="skill-icon"></ion-icon>
+        <ion-label class="skill-label">GitHub</ion-label>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>

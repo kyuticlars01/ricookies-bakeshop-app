@@ -1,234 +1,136 @@
-/* src/app/about/about.page.scss */
+// Define colors from your theme
+$light-tan: #D2B48C;      
+$dark-brown-text: #4A2E1F;
+$dark-accent: #8B4513;
+$card-cream: #FFFDD0;
 
-/* Define general colors for consistency */
-$dark-brown-text: #4A2E1F; 
-$toolbar-background: #A0522D; // Medium Brown for Toolbar/Header
-$light-background: #EBE0D2; // Very Light Cream/Tan for Main Background
-$card-cream: #F8F5EF; // Light Cream for Card Background
-$dark-accent: #8B4513; // Dark Brown accent for links/icons
-$pastel-yellow: #FFD700; // Light Gold/Pastel Yellow for horizontal bars
-
-// --- AGGRESSIVE FIX: FORCING VISIBLE BACKGROUND COLOR ON COMPONENT ---
-// 1. Force the entire component container's background to the light color
-:host {
-    background: $card-cream !important;
-    --ion-background-color: #{$card-cream} !important;
-    --ion-text-color: #{$dark-brown-text} !important;
+// Header toolbar
+ion-toolbar {
+  --background: #{$light-tan};
+  color: #000000;
+  
+  ion-menu-button {
+    --color: #000000;
+  }
 }
 
-// 2. Hide the underlying ion-content default dark color
+// Content background (FIXES THE BACKGROUND)
 ion-content {
-  --background: $toolbar-background !important;
-  background: $toolbar-background !important; /* Non-variable aggressive override */
-  
-  // Ensure all text in the content area is dark
-  color:$card-cream !important; 
+  --background: #{$light-tan};
   font-family: "Times New Roman", Times, serif;
 
   @media (prefers-color-scheme: dark) {
-    --background: $light-background !important; 
-    background: $light-background !important; 
-    color: $dark-brown-text !important;
-  }
-}
-// ----------------------------------------------------------------------
-
-// Style the header toolbar - MEDIUM BROWN
-ion-toolbar {
-  --background: #D2B48C; 
-  --color: #000000; 
-  font-family: "Times New Roman", serif;
-  
-  ion-menu-button {
-    --color: #000000; 
+    --background: #{$light-tan};
   }
 }
 
-// Style the card to match the new light background
-ion-card {
-  --background: #D2B48C; 
-  margin: 20px auto; 
-  max-width: 600px;
+// Style for all lists (makes them look like cards)
+.about-list {
+  background: #{$card-cream};
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin: 20px 16px; // Use margin like on contact page
+  padding: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style all the content inside the card */
-ion-card-content {
-  color: $dark-brown-text; 
+// Style for list headers
+ion-list-header {
+  ion-label {
+    color: #{$dark-brown-text};
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+}
+
+// Styles for items inside the lists
+ion-item {
+  --background: transparent;
+  --color: #{$dark-brown-text};
   font-family: "Times New Roman", Times, serif;
-  padding: 20px; 
-  text-align: center; 
 
   p {
     font-size: 16px;
     line-height: 1.5;
-    font-family: "Times New Roman", serif;
-    color: $dark-brown-text; 
-    text-align: center;
-  }
-
-  /* 1. REDUCE HORIZONTAL BAR SPACING (The Yellow Line) */
-  .divider {
-    height: 1px;
-    background-color: $pastel-yellow; 
-    opacity: 0.8; 
-    margin: 15px auto; /* Reduced spacing from 24px to 15px */
-  }
-  
-  /* 2. INCREASE FONT SIZE FOR HEADERS ("Meet the Owner", "Origin...", "Our Location") */
-  h2, h3 {
-    font-size: 1.6rem; /* Increased font size */
-    font-weight: bold;
-    color: $dark-brown-text; 
-    text-align: center;
-  }
-
-  .bold-text {
-    font-weight: bold;
-  }
-
-  /* Owner's Picture Style */
-  .image-wrapper {
-    width: 180px; 
-    height: 180px;
-    border-radius: 50%;
-    overflow: hidden; 
-    margin: 0 auto 16px auto; 
-    border: 3px solid $card-cream; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Embedded Map Container */
-  .map-iframe-container {
+    color: $dark-brown-text;
+    text-align: left; // Default text-align
     width: 100%;
-    max-width: 450px;
-    margin: 16px auto;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 2px solid $dark-accent; 
-    line-height: 0;
-  }
-
-  /* 3. BOLD LINK TEXT ("View on Google Maps", "Ricookies Page!") */
-  .location-link-container, .facebook-link-container {
-    background: transparent;
-    font-family: "Times New Roman", serif;
-    font-size: 20px; 
-    color: $dark-accent; 
-    margin: 10px auto; 
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    cursor: pointer; 
-    padding: 10px 0;
-    
-    span { /* Target the text inside the div */
-        font-weight: bold; /* Made the text bold */
-    }
-  }
-
-  .location-icon, .ricookies-fb-logo {
-    color: $dark-accent;
-    font-size: 32px; 
-    width: 40px; 
-    height: 40px;
-    margin-right: 0; 
-    padding-right: 8px;
-    object-fit: contain;
-  }
-}/* src/app/contact/contact.page.scss */
-
-// Define colors based on your Theme
-$dark-brown-text: #4A2E1F;    // Dark brown text for main content
-$dark-accent: #8B4513;        // Dark brown accent for icons
-$light-background: #D2B48C;   // Light brown background (Page/Toolbar)
-$card-cream: #FFFDD0;         // Cream background for lists/cards
-$item-border-color: #A0522D;  // Medium brown for item separators
-
-// Header toolbar
-ion-toolbar {
-  --background: #{$light-background}; 
-  color: #000000; 
-  
-  ion-menu-button {
-    --color: #000000; 
+    padding: 4px 0;
   }
 }
 
-// Content background
-ion-content {
-  --background: #{$light-background}; 
-  font-family: "Times New Roman", Times, serif;
-
-  @media (prefers-color-scheme: dark) {
-    --background: #{$light-background};
-  }
+// Centering for the owner section
+.owner-item {
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  display: block;
 }
 
-// Style for both lists (Card-like containers)
-ion-list {
-  background: #{$card-cream}; // Cream background
+.owner-content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.image-wrapper {
+  width: 180px; 
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden; 
+  margin: 0 auto; 
+  border: 3px solid $card-cream; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.owner-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center !important;
+  width: 100%;
+  margin-top: 16px; 
+}
+
+// Text alignment for story and address
+.origin-text {
+  text-align: justify !important; // Justify the long paragraph
+  white-space: pre-wrap; // Respects line breaks in your string
+}
+
+.location-address {
+  text-align: center !important;
+  width: 100% !important;
+  font-weight: 500;
+}
+
+// Map styles
+.map-iframe-container {
+  width: 100%;
+  margin: 8px auto 16px;
   border-radius: 12px;
-  margin: 20px auto; // Center the list/card
-  max-width: 600px; // Limit the max width
-  padding: 8px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 2px solid $light-tan; 
+  line-height: 0;
 }
 
-// 1. STYLE HEADERS ("Get in Touch", "Send us a Message")
-ion-list-header {
-  color: #{$dark-brown-text}; 
-  font-family: "Times New Roman", Times, serif;
-  font-size: 1.6rem; /* Increased font size */
-  font-weight: bold; /* Made bold */
-  padding-left: 16px;
-}
+// Link items (Maps & Facebook)
+.link-item {
+  font-weight: bold;
+  --color: #{$dark-accent}; // Dark brown link text
 
-// Style for list items
-ion-item {
-  --background: transparent; 
-  --color: #000000; 
-  font-family: "Times New Roman", Times, serif;
-  
-  /* 2. BAR SEPARATION FIX: Style the item border/separator */
-  --border-color: #{$item-border-color}; /* Use a visible brown color for separators */
-  --border-width: 0 0 1px 0; /* Only show a separator at the bottom */
-  --padding-start: 16px; /* Ensure content stays off the edge */
-  --padding-end: 16px;   /* Ensure content stays off the edge */
-  
   ion-icon {
-    color: $dark-accent; 
+    color: $dark-accent;
+    font-size: 24px;
     margin-right: 12px;
   }
-  
-  ion-label {
-    color: #000000;
-  }
-  
-  // Style for the input fields
-  ion-input,
-  ion-textarea {
-    --color: #000000; 
-    --placeholder-color: #555; 
-    --background: rgba(0, 0, 0, 0.05); 
-    border-radius: 6px;
-    padding-left: 10px !important;
-    margin-top: 5px;
-  }
-}
 
-// Style for the "SEND MESSAGE" button
-ion-button {
-  --background: $dark-accent; 
-  --background-activated: #A0522D;
-  --color: #ffffff; 
-  
-  height: 48px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0 auto 20px auto; /* Center button horizontally */
-  display: block; /* Make it a block element to respect auto margin */
-  max-width: 600px;
-  width: calc(100% - 32px); /* Maintain inner padding */
+  .ricookies-fb-logo {
+    width: 24px; 
+    height: 24px;
+    margin-right: 12px;
+    margin-left: 4px; // Align with icon
+  }
 }
